@@ -1,12 +1,12 @@
 import AT from "../actions/actionTypes";
 import { useEffect, useState } from "react";
-import { useUserContext } from "./useUserContext";
+import { useMainContext } from "./useMainContext";
 import { useVkContext } from "./useVkContext";
 
 export const useSearch = () => {
   const [text, setText] = useState("");
   const [requestText, setRequestText] = useState(null);
-  const { dispatch } = useUserContext();
+  const { dispatch } = useMainContext();
   const vk = useVkContext();
 
   useEffect(() => {

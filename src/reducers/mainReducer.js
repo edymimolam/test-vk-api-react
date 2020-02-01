@@ -1,6 +1,6 @@
 import AT from "../actions/actionTypes";
 
-export const userInitialState = {
+export const mainInitialState = {
   isLoading: false,
   isAuth: false,
   user: null,
@@ -8,8 +8,7 @@ export const userInitialState = {
   Error: null
 };
 
-export const userReducer = (state, action) => {
-  console.log(action);
+export const mainReducer = (state, action) => {
   switch (action.type) {
     case AT.LOGIN_REQUEST:
     case AT.FRIENDS_REQUEST:

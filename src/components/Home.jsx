@@ -3,13 +3,13 @@ import Avatar from "./Avatar";
 import Search from "./Search";
 import Friends from "./Friends";
 import { useAuth } from "../hooks/useAuth";
-import { useUserContext } from "../hooks/useUserContext";
+import { useMainContext } from "../hooks/useMainContext";
 
 const Home = () => {
   const { login, logout } = useAuth();
   const {
     state: { isAuth, user, friends }
-  } = useUserContext();
+  } = useMainContext();
   return (
     <div>
       {isAuth && (

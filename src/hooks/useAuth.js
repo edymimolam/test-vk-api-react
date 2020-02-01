@@ -1,10 +1,10 @@
 import AT from "../actions/actionTypes";
 import { useEffect, useCallback } from "react";
-import { useUserContext } from "./useUserContext";
+import { useMainContext } from "./useMainContext";
 import { useVkContext } from "./useVkContext";
 
 export const useAuth = () => {
-  const { dispatch } = useUserContext();
+  const { dispatch } = useMainContext();
   const vk = useVkContext();
 
   const getUserInfo = useCallback(
