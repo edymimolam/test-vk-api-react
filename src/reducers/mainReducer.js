@@ -45,6 +45,11 @@ export const mainReducer = (state, action) => {
         isLoading: false,
         Error: action.payload
       };
+    case AT.FRIENDS_CLEAR:
+      return {
+        ...state,
+        friends: null
+      };
     default:
       return state;
   }

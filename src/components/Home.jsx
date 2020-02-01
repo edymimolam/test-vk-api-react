@@ -8,7 +8,7 @@ import { useMainContext } from "../hooks/useMainContext";
 const Home = () => {
   const { login, logout } = useAuth();
   const {
-    state: { isAuth, user, friends }
+    state: { isAuth, user }
   } = useMainContext();
   return (
     <div>
@@ -18,7 +18,7 @@ const Home = () => {
           <Avatar src={user.photo_200_orig} />
           <p>{user.counters.friends}</p>
           <Search />
-          <Friends friends={friends} />
+          <Friends />
         </div>
       )}
 
