@@ -11,7 +11,7 @@ export const useAuth = () => {
     () =>
       vk.Api.call(
         "users.get",
-        { fields: "photo_200_orig, counters", v: "5.103" },
+        { fields: "photo_200, counters", v: "5.103" },
         r => dispatch({ type: AT.LOGIN_SUCCESS, payload: r.response[0] })
       ),
     [dispatch, vk.Api]
@@ -37,7 +37,7 @@ export const useAuth = () => {
     );
   };
 
-  const logout = () => vk.Auth.logout(r => dispatch({ type: AT.LOGOUT }));
+  const logout = () => vk.Auth.logout(() => dispatch({ type: AT.LOGOUT }));
 
   return {
     login,

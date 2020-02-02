@@ -13,7 +13,7 @@ export const useSearch = () => {
       dispatch({ type: AT.FRIENDS_REQUEST });
       vk.Api.call(
         "friends.search",
-        { q: text, fields: "photo_200_orig, screen_name", v: "5.103" },
+        { q: text, fields: "photo_100, screen_name", v: "5.103" },
         r => {
           if (r.response)
             dispatch({ type: AT.FRIENDS_SUCCESS, payload: r.response });

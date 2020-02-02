@@ -3,7 +3,6 @@ import { mainReducer, mainInitialState } from "./reducers/mainReducer";
 import { MainProvider } from "./providers/MainProvider";
 import { VKProvider } from "./providers/VkProvider";
 import VK from "react-vk";
-import "./App.css";
 import Home from "./components/Home";
 
 function App() {
