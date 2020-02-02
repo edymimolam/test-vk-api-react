@@ -5,14 +5,15 @@ export const mainInitialState = {
   isAuth: false,
   user: null,
   friends: null,
-  Error: null
+  error: null
 };
 
 export const mainReducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case AT.LOGIN_REQUEST:
     case AT.FRIENDS_REQUEST:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true, error: null };
     case AT.LOGIN_SUCCESS:
       return {
         ...state,
@@ -25,7 +26,7 @@ export const mainReducer = (state, action) => {
         ...state,
         isLoading: false,
         isAuth: false,
-        Error: action.payload
+        error: action.payload
       };
     case AT.LOGOUT:
       return {
@@ -43,7 +44,7 @@ export const mainReducer = (state, action) => {
       return {
         ...state,
         isLoading: false,
-        Error: action.payload
+        error: action.payload
       };
     case AT.FRIENDS_CLEAR:
       return {

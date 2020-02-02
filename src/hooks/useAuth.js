@@ -12,12 +12,20 @@ export const useAuth = () => {
       vk.Api.call(
         "users.get",
         { fields: "photo_200, counters", v: "5.103" },
-        r => dispatch({ type: AT.LOGIN_SUCCESS, payload: r.response[0] })
+        r => {
+          r.error
+            ? dispatch({
+                type: AT.LOGIN_FAILURE,
+                payload: r.error
+              })
+            : dispatch({ type: AT.LOGIN_SUCCESS, payload: r.response[0] });
+        }
       ),
     [dispatch, vk.Api]
   );
 
   useEffect(() => {
+    dispatch({ type: AT.LOGIN_REQUEST });
     vk.Auth.getLoginStatus(r =>
       r.session ? getUserInfo() : dispatch({ type: AT.LOGIN_FAILURE })
     );
@@ -25,16 +33,14 @@ export const useAuth = () => {
 
   const login = () => {
     dispatch({ type: AT.LOGIN_REQUEST });
-    vk.Auth.login(
-      r =>
-        r.session
-          ? getUserInfo()
-          : dispatch({
-              type: AT.LOGIN_FAILURE,
-              payload: new Error("Authorization Error")
-            }),
-      2
-    );
+    vk.Auth.login(r => {
+      r.session
+        ? getUserInfo()
+        : dispatch({
+            type: AT.LOGIN_FAILURE,
+            payload: "Authorization Error"
+          });
+    }, 2);
   };
 
   const logout = () => vk.Auth.logout(() => dispatch({ type: AT.LOGOUT }));
