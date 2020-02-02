@@ -9,7 +9,6 @@ export const mainInitialState = {
 };
 
 export const mainReducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case AT.LOGIN_REQUEST:
     case AT.FRIENDS_REQUEST:
